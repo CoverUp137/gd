@@ -115,10 +115,10 @@ pm2 stop jbot
 pm2 restart jbot
 
 ## 一键更新1
-rm -rf /ql/repo/gd && cd /ql/repo/ && git clone https://github.com/CoverUp137/gd.git && pm2 stop jbot ; rm -rf /ql/jbot/* && cp -a /ql/repo/gd/* /ql/jbot/ ; pm2 start jbot
+rm -rf /ql/repo/gd && cd /ql/repo/ && git clone https://github.com/coverUP2/gd.git && pm2 stop jbot ; rm -rf /ql/jbot/* && cp -a /ql/repo/gd/* /ql/jbot/ ; pm2 start jbot
 
 #或一键更新2
-if [ -d /ql/data ];then QL=/ql/data;else QL=/ql; fi;cd ${QL} && rm -f update.sh* && wget  -q https://raw.githubusercontent.com/CoverUp137/gd/main/update.sh>/dev/null && bash update.sh
+if [ -d /ql/data ];then QL=/ql/data;else QL=/ql; fi;cd ${QL} && rm -f update.sh* && wget  -q https://raw.githubusercontent.com/coverUP2/gd/main/update.sh>/dev/null && bash update.sh
 
 ## 卸载机器人
 pm2 stop jbot && pm2 delete jbot
