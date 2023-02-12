@@ -17,7 +17,7 @@ async def CheckCK(event):
     try:        
         await event.edit('开始检查账号情况，请稍后...')
         
-        cmdtext="task /ql/scripts/ccwav_QLScript2/bot_jd_CkSeq.js now"        
+        cmdtext="task /ql/scripts/bot_jd_CkSeq.js now"        
         p = await asyncio.create_subprocess_shell(
             cmdtext, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE)
         res_bytes, res_err = await p.communicate()
