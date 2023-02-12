@@ -17,7 +17,7 @@ install_depend(){
     # 包依赖
     apk add zlib zlib-dev libjpeg-turbo libjpeg-turbo-dev gcc python3-dev libffi-dev musl-dev linux-headers
     # 模块依赖
-    pip3 install httpx qrcode==7.3.1 Telethon==1.24.0 requests==2.27.1 Pillow==9.0.0 python-socks==1.2.4 async_timeout==4.0.2 prettytable==3.0.0 
+    pip3 install qrcode==7.3.1 Telethon==1.24.0 requests==2.27.1 Pillow==9.0.0 python-socks==1.2.4 async_timeout==4.0.2 prettytable==3.0.0 httpx==0.23.3
 
     if [ -f ${QLMainPath}/config/extra.sh ];then
         if [ `grep "#机器人所需依赖" ${QLMainPath}/config/extra.sh` ];then
