@@ -17,7 +17,7 @@ install_depend(){
     # 包依赖
     apk add zlib zlib-dev libjpeg-turbo libjpeg-turbo-dev gcc python3-dev libffi-dev musl-dev linux-headers
     # 模块依赖
-    pip3 install qrcode==7.3.1 Telethon==1.24.0 requests==2.27.1 Pillow==9.0.0 python-socks==1.2.4 async_timeout==4.0.2 prettytable==3.0.0 httpx==0.23.3
+    pip3 install qrcode==7.3.1 Telethon==1.24.0 requests==2.27.1 Pillow==9.0.0 python-socks==1.2.4 async_timeout==4.0.2 prettytable==3.0.0
 
     if [ -f ${QLMainPath}/config/extra.sh ];then
         if [ `grep "#机器人所需依赖" ${QLMainPath}/config/extra.sh` ];then
@@ -26,7 +26,7 @@ install_depend(){
             echo -e "解决重启青龙后，jbot失效问题~"
             echo -e "#机器人所需依赖" >>${QLMainPath}/config/extra.sh
             echo "apk add zlib zlib-dev libjpeg-turbo libjpeg-turbo-dev gcc python3-dev libffi-dev musl-dev linux-headers" >>${QLMainPath}/config/extra.sh
-            echo "pip3 install qrcode==7.3.1 Telethon==1.24.0 requests==2.27.1 Pillow==9.0.0 python-socks==1.2.4 async_timeout==4.0.2 prettytable==3.0.0 httpx==0.23.3" >>${QLMainPath}/config/extra.sh
+            echo "pip3 install qrcode==7.3.1 Telethon==1.24.0 requests==2.27.1 Pillow==9.0.0 python-socks==1.2.4 async_timeout==4.0.2 prettytable==3.0.0" >>${QLMainPath}/config/extra.sh
             echo "cd ${QLMainPath}/jbot  && pm2 start ecosystem.config.js" >>${QLMainPath}/config/extra.sh
             echo "cd ${QLMainPath}/ && pm2 start jbot" >>${QLMainPath}/config/extra.sh
         fi
@@ -66,3 +66,4 @@ install_depend
 gitPull
 echo -e "\n*******************\n所需环境已部署完成\n*******************\n"
 echo -e "请前往面板【配置文件】配置tg机器人参数，再启动机器人即可。\n参考本仓库第3-4步: https://github.com/curtinlv/gd/blob/main/README.md "
+echo -e "如需要安装使用京粉插件，自己安装httpx依赖 "
