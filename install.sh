@@ -26,7 +26,7 @@ install_depend(){
             echo -e "解决重启青龙后，jbot失效问题~"
             echo -e "#机器人所需依赖" >>${QLMainPath}/config/extra.sh
             echo "apk add zlib zlib-dev libjpeg-turbo libjpeg-turbo-dev gcc python3-dev libffi-dev musl-dev linux-headers" >>${QLMainPath}/config/extra.sh
-            echo "pip3 install qrcode==7.3.1 Telethon==1.24.0 requests==2.27.1 Pillow==9.0.0 python-socks==1.2.4 async_timeout==4.0.2 prettytable==3.0.0" >>${QLMainPath}/config/extra.sh
+            echo "pip3 install qrcode==7.3.1 Telethon==1.24.0 requests==2.27.1 Pillow==9.0.0 python-socks==1.2.4 async_timeout==4.0.2 prettytable==3.0.0 httpx==0.23.3" >>${QLMainPath}/config/extra.sh
             echo "cd ${QLMainPath}/jbot  && pm2 start ecosystem.config.js" >>${QLMainPath}/config/extra.sh
             echo "cd ${QLMainPath}/ && pm2 start jbot" >>${QLMainPath}/config/extra.sh
         fi
