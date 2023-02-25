@@ -97,7 +97,7 @@ async def user_login(event):
                 msg = await conv.send_message('请输入手机号：\n例如：+8618888888888')
                 phone = await conv.get_response()
                 await user.send_code_request(phone.raw_text, force_sms=False)
-                msg = await conv.send_message('请在客户端输入验证码，并将验证码填入此处 \n格式：code1234code：')
+                msg = await conv.send_message('请在客户端输入验证码，并将验证码填入此处 \n格式：code1234code')
                 code = await conv.get_response()
                 try:
                     await user.sign_in(phone.raw_text, code.raw_text)
