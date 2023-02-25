@@ -97,14 +97,16 @@ async def user_login(event):
                 msg = await conv.send_message('请输入手机号：\n例如：+8618888888888')
                 phone = await conv.get_response()
                 await user.send_code_request(phone.raw_text, force_sms=False)
-                msg = await conv.send_message('请输入手机验证码:\n例如`code12345code`\n两边的**code**必须有！')
+                msg = await conv.send_message('请在客户端输入验证码，并将验证码填入此处 \n格式：code1234code：')
                 code = await conv.get_response()
-                await user.sign_in(phone.raw_text, code.raw_text.replace('code', ''))
-                await jdbot.send_message(chat_id, '恭喜您已登录成功！\n自动重启中！')
-            start()
+                try:
+                    await user.sign_in(phone.raw_text, code.raw_text)
+                    await jdbot.send_message(chat_id, '恭喜您已登录成功！\n自动重启中！')
+                    start()
+                except Exception as e:
+                    await jdbot.send_message(chat_id, '登录失败，请再次尝试！')
+                    raise e
     except asyncio.exceptions.TimeoutError:
         await jdbot.edit_message(msg, '登录已超时，对话已停止')
     except Exception as e:
         await jdbot.send_message(chat_id, '登录失败\n 再重新登录\n' + str(e))
-    # finally:
-    #     await user.disconnect()
