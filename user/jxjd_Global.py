@@ -19,7 +19,7 @@ async def jcmd(event):
         return
 
     data = {"key": strText}
-    response = requests.post("http://自建sign地址/jKeyCommand", data=data, headers={"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8;"})
+    response = requests.post("http://自建sign地址/jd/jKeyCommand", data=data, headers={"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8;"})
     if response.status_code == 200:
         result = response.json()
         if result["code"] == 200:
