@@ -30,7 +30,7 @@ async def jcmd(event):
                 break
     
     if not jdjx_sign:
-        await user.send_message(event.chat_id, '请先设置 jdjx_sign 变量')
+        await user.send_message(event.chat_id, '请先自建sign然后先设置 jdjx_sign 变量')
         return
 
     data = {"key": strText}
