@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
-
-daili='https://ghproxy.com'
+#代理
+daili=''
 
 if [ -d /ql/data/config ];then
     QLMainPath='/ql/data'
