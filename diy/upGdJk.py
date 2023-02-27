@@ -14,7 +14,7 @@ from ..bot.utils import cmd
 
 
 async def getNewVer():
-    url = 'https://raw.githubusercontent.com/coverUP2/gd/main/diy/upGdJk.py'
+    url = 'https://raw.githubusercontent.com/coverUP2/gd/main/bot/update.py'
     if '下载代理' in BOT_SET.keys() and str(BOT_SET['下载代理']).lower() != 'false' and 'github' in url:
         url = f'{BOT_SET["下载代理"]}/{url}'
     newversion = None
