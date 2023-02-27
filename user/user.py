@@ -11,7 +11,7 @@ from telethon import events
 from .. import chat_id, jdbot, logger, TOKEN, user, jk, CONFIG_DIR, readJKfile, LOG_DIR
 from ..bot.utils import cmd, V4
 from ..diy.utils import rwcon, myzdjr_chatIds, my_chat_id
-jk_version = 'v1.3.0'
+jk_version = 'v1.2.9'
 from ..bot.update import version as jk_version
 
 
