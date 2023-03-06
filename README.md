@@ -1,6 +1,8 @@
 
 
 # 修复BOT登陆提示406
+# 增加CC大佬的部分插件
+# 去除原版的WALI解析，新增自建sign解析
 
 <h1 align="center">
   青龙安装Bot监控
