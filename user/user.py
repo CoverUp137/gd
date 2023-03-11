@@ -155,7 +155,7 @@ async def funCX(name, scriptPath, msg, group, lable=1):
         result = os.popen(cxjc)
         r = result.readlines()
         if r:
-            a = random.randint(40, 90) #队列检测休眠时间
+            a = random.randint(60, 90) #队列检测休眠时间
             msg = await jdbot.edit_message(msg, f"【队列】{group} 的 `[{name}]` 变量当前已在跑，已加入队列等待。本次等待`{a}`秒后再次尝试。可发送【`监控明细`】查询队列情况。")
             if lable < 21:
                 if lable == 1:
