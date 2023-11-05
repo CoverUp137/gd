@@ -81,7 +81,7 @@ async def getJkConfig(jk):
     envNum = len(envNameList)
     for i in range(envNum):
         if i == envNum - 1:
-            patternStr += envNameList[i] + "|jd_redrain_url|jd_redrain_half_url|zjdbody"
+            patternStr += envNameList[i] + "|"
         else:
             patternStr += envNameList[i] + "|"
     if os.path.exists(jk_today_file):
@@ -155,7 +155,7 @@ async def funCX(name, scriptPath, msg, group, lable=1):
         result = os.popen(cxjc)
         r = result.readlines()
         if r:
-            a = random.randint(60, 90) #队列检测休眠时间
+            a = random.randint(10, 15) #队列检测休眠时间
             msg = await jdbot.edit_message(msg, f"【队列】{group} 的 `[{name}]` 变量当前已在跑，已加入队列等待。本次等待`{a}`秒后再次尝试。可发送【`监控明细`】查询队列情况。")
             if lable < 21:
                 if lable == 1:
@@ -296,18 +296,18 @@ async def activityID(event):
                 name = nameList[envNameList.index(i)]
                 scriptPath = scriptPathList[envNameList.index(i)]
                 break
-            elif "zjdbody" in text:
-                name = "赚喜豆-每天90豆"
-                scriptPath = '/ql/data/scripts/pkc_zjd.js'
-                break
-            elif "jd_redrain_url" in text:
-                name = "整点京豆雨"
-                scriptPath = 'xxxxxxxxx'
-                break
-            elif "jd_redrain_half_url" in text:
-                name = "半点京豆雨"
-                scriptPath = 'xxxxxxxxx'
-                break
+            #elif "zjdbody" in text:
+                #name = "赚喜豆-每天90豆"
+                #scriptPath = '/ql/data/scripts/pkc_zjd.js'
+                #break
+            #elif "jd_redrain_url" in text:
+                #name = "整点京豆雨"
+                #scriptPath = 'xxxxxxxxx'
+                #break
+            #elif "jd_redrain_half_url" in text:
+                #name = "半点京豆雨"
+               # scriptPath = 'xxxxxxxxx'
+               # break
         if not name:
             return
         msg = await jdbot.send_message(chat_id, f'【监控】{group} 发出的 `[{name}]` 环境变量！', link_preview=False)
@@ -345,7 +345,7 @@ async def activityID(event):
                     continue
                 if isNow:
                     # 进入队列检测前随机休眠，防止并行检测。
-                    a = random.randint(1, 10)
+                    a = random.randint(1, 2)
                     await asyncio.sleep(a)
                     msg = await funCX(name, scriptPath, msg, group)
                     configs = rwcon("str")
@@ -354,7 +354,7 @@ async def activityID(event):
                         continue
                 if 'VENDER_ID' in key:
                     # 监控开卡随机休眠
-                    a = random.randint(3, 10)
+                    a = random.randint(1, 2)
                     await asyncio.sleep(a)
                 configs = re.sub(f'{key}=("|\').*("|\').*', kv, configs)
                 change += f"【替换】{group} 发出的 `[{name}]` 环境变量成功\n`{kv}`\n\n"
@@ -396,26 +396,26 @@ async def activityID(event):
                                 readDL(True, dl)
                     except:
                         pass
-                    await cmd(f'{cmdName} {scriptPath} now')
+                    await cmd(f'{cmdName} {scriptPath} desi JD_COOKIE 1-25  now')
                     break
                 # 赚京豆助力，将获取到的团body发给自己测试频道，仅自己内部助力使用
-                elif "zjdbody" in text:
-                    lable = True
-                    if str(event.chat.id) in str(my_chat_id):
-                        await cmd(f'{cmdName} /ql/data/scripts/pkc_zjd.js now')
-                    break
-                elif "jd_redrain_url" in text:
-                    lable = True
-                    msg = await jdbot.send_message(chat_id, r'`更换整点雨url完毕\n请定时任务0 0 * * * task jd_redrain now')
-                    await asyncio.sleep(1)
-                    await jdbot.delete_messages(chat_id, msg)
-                    break
-                elif "jd_redrain_half_url" in text:
-                    lable = True
-                    msg = await jdbot.send_message(chat_id, r'`更换半点雨url完毕\n请定时任务30 21,22 * * * task jd_redrain_half now')
-                    await asyncio.sleep(1)
-                    await jdbot.delete_messages(chat_id, msg)
-                    break
+              #  elif "zjdbody" in text:
+                    #lable = True
+                  #  if str(event.chat.id) in str(my_chat_id):
+                        #await cmd(f'{cmdName} /ql/data/scripts/pkc_zjd.js now')
+                    #break
+                #elif "jd_redrain_url" in text:
+                  #  lable = True
+                    #msg = await jdbot.send_message(chat_id, r'`更换整点雨url完毕\n请定时任务0 0 * * * task jd_redrain now')
+                    #await asyncio.sleep(1)
+                   # await jdbot.delete_messages(chat_id, msg)
+                   # break
+               # elif "jd_redrain_half_url" in text:
+                   # lable = True
+                   # msg = await jdbot.send_message(chat_id, r'`更换半点雨url完毕\n请定时任务30 21,22 * * * task jd_redrain_half now')
+                  #  await asyncio.sleep(1)
+                   # await jdbot.delete_messages(chat_id, msg)
+                   # break
             if not lable:
                 await jdbot.send_message(chat_id, f"看到这行字,是有严重BUG!")
         except ImportError:
