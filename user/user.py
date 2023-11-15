@@ -67,7 +67,7 @@ async def funCX(name, scriptPath, msg, group, lable=1):
         result = os.popen(cxjc)
         r = result.readlines()
         if r:
-            a = random.randint(60, 180) #队列检测休眠时间
+            a = random.randint(8, 15) #队列检测休眠时间
             msg = await jdbot.edit_message(msg, f"【队列】{group} 的 `[{name}]` 变量当前已在跑，已加入队列等待。本次等待`{a}`秒后再次尝试。可发送【`监控明细`】查询队列情况。")
             if lable < 21:
                 if lable == 1:
@@ -250,7 +250,7 @@ async def activityID(event):
                                 readDL(True, dl)
                     except:
                         pass
-                    await cmd(f'{cmdName} {scriptPath} now')
+                    await cmd(f'{cmdName} {scriptPath} desi JD_COOKIE 1-25 now')
                     break
                 # 赚京豆助力，将获取到的团body发给自己测试频道，仅自己内部助力使用
                 elif "zjdbody" in text:
